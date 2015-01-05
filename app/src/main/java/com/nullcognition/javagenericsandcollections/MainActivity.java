@@ -18,6 +18,24 @@ public class MainActivity extends Activity {
 	  super.onCreate(savedInstanceState);
 	  setContentView(R.layout.activity_main);
 	  generics();
+	  genericGetAndSet();
+   }
+
+   private void genericGetAndSet(){
+	  // get is one:many
+	  List<Integer> listOfInteger = Arrays.<Integer>asList(1,2,3);
+	  List<? extends Object> listExtObject = listOfInteger; // List is now treated like type <Integer> because the reference
+	  listExtObject.add(null); // null belogs to every reference type
+	  // set must be of a single specific type, but since we are dealing with integer we can go no higher
+	  // however if we
+	  List<Object> listOfObject = Arrays.<Object>asList('.', 2, "hello");
+	  // when putting stuff in we can limit the lowest type
+	  List<? super Integer> superOfInteger = Arrays.asList(1.3, 3.3, "anything"); // must be a super of int, can contain ints since the parent is compatible all of the child types for storage
+	  List<? super Integer> superOfInteger2 = Arrays.<Number>asList(1.3, 3.3); // explicit cast here, not needed unless to specificall limit the input, then why wouldn't you just ? super Number in the first place
+	  listOfObject.addAll(superOfInteger);
+	  listOfObject.addAll(superOfInteger2);
+
+
    }
 
    private void generics(){
