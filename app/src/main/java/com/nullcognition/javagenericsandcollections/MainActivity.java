@@ -19,6 +19,14 @@ public class MainActivity extends Activity {
 	  setContentView(R.layout.activity_main);
 	  generics();
 	  genericGetAndSet();
+	  genericWildCardsAndArrays();
+   }
+
+   private void genericWildCardsAndArrays(){
+	  // array types are covariant
+	  // generics are invariant
+	  // generics with wildtypes are covariant
+	  // generics with wildtypes can also be contravariant
    }
 
    private void genericGetAndSet(){
