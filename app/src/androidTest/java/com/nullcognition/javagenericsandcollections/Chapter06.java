@@ -36,7 +36,7 @@ public class Chapter06 extends TestCase {
 	  // new List<Integer>[] {a,b} is not allowed, not refiable, new T[3] not allowed due to generic array creation
    }
 
-   // The Principal Of Truth In Advertising - the reified type of an array must be the subtype of... the erasure of its static subtype
+   // The Principle Of Truth In Advertising - the reified type of an array must be the subtype of... the erasure of its static subtype
    // collections framework has two methods of converting collections to arrays: public Object[] toArray(); public <T> T[] toArray(T[] a)
 
    // classes may be used as an alternative: String.class has type Class<String>
@@ -50,11 +50,11 @@ public class Chapter06 extends TestCase {
    }
    // with the call of List<String> strings = Arrays.asList("one", "two"); String[] a = toArray(strings, String.class);
 
-   // The Principal of Indecent Exposure - never publicly expose an array where the components do not have a reifiable type
+   // The Principle of Indecent Exposure - never publicly expose an array where the components do not have a reifiable type
    // its an error to create an array of a non refieable type, but one may be declared and perform an unchecked cast
    // since reification is necessary to prevent erronious types entering a super type referencing a subtype see testArrayCreation, the same can be applied to arrays
    // attempting List<? extends Number>[] = List<Integer>[]... // class cast exception
-   // note: the reflection library dose violate this principal with getTypeParameters() on methods and classes
+   // note: the reflection library does violate this Principle with getTypeParameters() on methods and classes
 
    // Varargs should be of a reifiable type. (A vararg of a nonreifiable type will issue an unchecked warning.)
 

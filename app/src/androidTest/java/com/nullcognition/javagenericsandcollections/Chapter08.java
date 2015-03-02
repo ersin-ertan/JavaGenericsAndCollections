@@ -15,7 +15,7 @@ import java.util.RandomAccess;
  * Created by ersin on 26/02/15 at 8:02 AM
  */
 
-// Effective Generics pg 108 *important re-read* - checked collections, security issues, specialized classes, and binary compatibility
+// Effective Generics - checked collections, security issues, specialized classes, and binary compatibility
 
 public class Chapter08 extends TestCase {
 

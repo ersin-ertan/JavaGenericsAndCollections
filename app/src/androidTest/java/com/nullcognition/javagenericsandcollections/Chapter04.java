@@ -28,10 +28,8 @@ public class Chapter04 extends TestCase {
    // the inner class(if not static) shares the fields of the outerclass, including the type parameter
    // but if static, it does not there are two ways to access the type
 
-
-
    public void testInner(){
-	  Outer<String>.Inner inner; // second parameter not needed since Inner has the fields from the scope of Outer
+	  Outer<String>.Inner inner; // a second type parameter is not needed since Inner has the fields from the scope of Outer
 	  // vs the better way of:
 	  Outerr.Innerr<Integer> innerr; // explicit
    }
