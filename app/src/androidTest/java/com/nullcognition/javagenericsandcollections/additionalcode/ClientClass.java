@@ -9,7 +9,7 @@ public class ClientClass {
 	  // and the inferred type, along with the type taken in, if bound, by any static methods defined
 
 	  // start
-	  return Tree.branch( // branch							               S
+	  return Tree.branch( // branch							       S
 						  Tree.leaf(1.4),// leaf		   		   /\
 						  Tree.branch( // branch				    /\
 									   Tree.leaf(2.2), // leaf
