@@ -69,6 +69,7 @@ abstract class Expression <T> {
    }
 
    static public <A, B> Expression<A> left(final Expression<Pair<A, B>> a){
+
 	  return new Expression<A>() {
 
 		 @Override
@@ -80,6 +81,7 @@ abstract class Expression <T> {
    }
 
    static public <A, B> Expression<B> right(final Expression<Pair<A, B>> b){
+
 	  return new Expression<B>() {
 
 		 @Override
