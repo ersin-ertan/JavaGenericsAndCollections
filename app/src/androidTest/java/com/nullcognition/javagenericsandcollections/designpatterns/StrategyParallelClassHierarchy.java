@@ -8,22 +8,36 @@ package com.nullcognition.javagenericsandcollections.designpatterns;
 // Type00 - Parallel Class Hierarchies - Generics allow us to specialize a given tax strategy to a given type of tax payer, and
 // allow the compiler to detect when a tax strategy is applied to the wrong type of tax payer
 
-// Type01 - Advanced Strategy Pattern with Recursive Generics - an object contains the strategy to be applied to it, getThis trick is useful
-// in this situation whenever one wants to use this in the base type with the more specific type provided by the type parameter
-// protected abstract P getThis();
-	  /*
-	  	abstract class Trust<T extends Trust<T>> extends TaxPayer<T> { ... }
-		final class NonProfitTrust extends Trust<NonProfitTrust> { ... }
-		final class ForProfitTrust extends Trust<ForProfitTrust> { ... }
-	  */
-
-public class Strategy {}
-
-class StrategyParallelClassHierarchy { // given a tax strategy, generics will use the type Taxpayer as defined in the TaxStrategy interface, and error if
+public class StrategyParallelClassHierarchy {// given a tax strategy, generics will use the type Taxpayer as defined in the TaxStrategy interface, and error if
    // the type is not compatible at compile time
 
-   // the two parallel class hierarchies are the taxyaper, person and trust
+   // the two parallel class hierarchies are the taxyPayer, person and trust
    // and the other is of strategies coresponding to: DefaultTaxStrategy and DodgingTaxStrategy, as they apply to TaxPayer, non for Person, and one for Trust
+/*
+		TaxPayer------DefaultStrategy/DodgingStrategy <P extends TaxPayer> implements TaxStrategy<P> where TaxStrategy <P extends TaxPayer>
+		   /  \
+		  /   \
+	Person	  Trust---TrustStrategy extends Default<Trust>
+ */
+
+   public void clientAssignStrategy(){
+
+	  Person person = new Person(10000000);
+	  Trust nonProfit = new Trust(10000000, true);
+	  Trust forProfit = new Trust(10000000, false);
+
+	  TaxStrategy<Person> defaultStrategy = new DefaultTaxStrategy<>();
+	  TaxStrategy<Person> dogingStrategy = new DodgingTaxStrategy<>();
+	  assert defaultStrategy.computeTax(person) == 4000000;
+	  assert dogingStrategy.computeTax(person) == 0;
+
+	  TaxStrategy<Trust> trustStrategy = new TrustTaxStrategy();
+	  assert trustStrategy.computeTax(nonProfit) == 0;
+	  assert trustStrategy.computeTax(forProfit) == 4000000;
+
+	  // trustStrategy.computeTax(person); // compile-time error
+
+   }
 
    abstract class TaxPayer {
 
