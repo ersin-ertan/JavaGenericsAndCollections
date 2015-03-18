@@ -5,7 +5,7 @@ package com.nullcognition.javagenericsandcollections.designpatterns;
  */
 
 // used to decouple a method from an object, allowing you supply many possible instances of the method
-// Type00 - Parallel Class Hierarchies - Generics allow us to specialize a given tax strategy to a given type of tax payer, and
+// Parallel Class Hierarchies - Generics allow us to specialize a given tax strategy to a given type of tax payer, and
 // allow the compiler to detect when a tax strategy is applied to the wrong type of tax payer
 
 public class StrategyParallelClassHierarchy {// given a tax strategy, generics will use the type Taxpayer as defined in the TaxStrategy interface, and error if
