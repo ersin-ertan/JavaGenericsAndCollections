@@ -38,7 +38,7 @@ public class VisitorClass {
 	  });
    }
 
-   public void makeVisitorTree(){ // same instantiation but methods are defined external to the structure of the tree class
+   public static void makeVisitorTree(){ // same instantiation but methods are defined external to the structure of the tree class
 	  VTree<Integer> integerVTree = // start
 		VTree.branch( // branch							   S
 					  VTree.leaf(1),// leaf				   /\
@@ -47,7 +47,7 @@ public class VisitorClass {
 									VTree.leaf(3))); // leaf
    }
 
-   public void makeGenericTree(){
+   public static void makeGenericTree(){
 	  Tree<Integer> integerTree = // start
 		Tree.branch( // branch							   S
 					 Tree.leaf(1),// leaf				   /\

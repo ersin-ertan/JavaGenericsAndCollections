@@ -19,7 +19,7 @@ package com.nullcognition.javagenericsandcollections.designpatterns;
 
 public class StrategyRecursiveGenerics {
 
-   public void clientProvideStrategy(){
+   public static void clientProvideStrategy(){
 
 	  long amount = 10000000L;
 
