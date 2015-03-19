@@ -1,6 +1,8 @@
 package com.nullcognition.javagenericsandcollections.designpatterns;
 
 import java.util.EnumMap;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Created by ersin on 02/03/15 at 10:44 PM
@@ -8,6 +10,9 @@ import java.util.EnumMap;
 
 // Subject-Observer pattern uses parallel class hierarchies, but this time we require two type variables with
 // mutually recursive bounds, one to stand for the specific kind of subject and one to stand for the specific kind of observer
+
+   // provided observer and observable implementation from book is not in sync with the java implementation, as the java implementation does not
+   // allow for generics
 
 public class Subject_Observer {
 
@@ -21,21 +26,29 @@ public class Subject_Observer {
 
    public class Observable <S extends Observable<S, O, A>, O extends Observer<S, O, A>, A> {
 
-	  public void addObserver(O o){ throw new StubException();}
+	  List<Observer> observerList = new LinkedList<>();
+	  boolean hasChanged = false;
 
-	  protected void clearChanged(){ throw new StubException();}
+	  public void addObserver(O o){ observerList.add(o);}
 
-	  public int countObservers(){ throw new StubException();}
+	  protected void clearChanged(){ hasChanged = false;}
 
-	  public void deleteObserver(O o){ throw new StubException();}
+	  public int countObservers(){ return observerList.size();}
 
-	  public boolean hasChanged(){ throw new StubException();}
+	  public void deleteObserver(O o){ observerList.remove(o);}
 
-	  public void notifyObservers(){ throw new StubException();}
+	  public boolean hasChanged(){ return hasChanged;}
+
+	  public void notifyObservers(){
+		 for(Observer _observerList : observerList){
+			// _observerList.update(); // not sure on how to implement the observer update, which takes in the observable and the type
+			// unless there is some kind of data object(ike the EnumMap) that is stored in the observable.
+		 }
+	  }
 
 	  public void notifyObservers(A a){ throw new StubException();}
 
-	  protected void setChanged(){ throw new StubException();}
+	  protected void setChanged(){ }
    }
 
    public interface Observer <S extends Subject_Observer.Observable<S, O, A>, O extends Observer<S, O, A>, A> {
