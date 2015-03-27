@@ -3,11 +3,6 @@ package com.nullcognition.javagenericsandcollections.collections.set;
 import junit.framework.TestCase;
 
 import java.util.EnumSet;
-import java.util.HashSet;
-import java.util.LinkedHashSet;
-import java.util.NavigableSet;
-import java.util.TreeSet;
-import java.util.concurrent.ConcurrentSkipListSet;
 
 /**
  * Created by ersin on 26/03/15 at 10:53 PM
@@ -23,10 +18,6 @@ public class ClassEnumSet extends TestCase {
 
    // field defiinitions --------------------
    EnumSet<AEnum> enumSet;
-   LinkedHashSet linkedHashSet;
-   NavigableSet navigableSet;
-   TreeSet treeSet;
-   ConcurrentSkipListSet concurrentSkipListSet;
 
    AEnum me = AEnum.A;
 
