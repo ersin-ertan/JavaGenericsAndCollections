@@ -27,30 +27,27 @@ public class ClassCopyOnWriteArraySet {
 	  Iterator<Integer> it = copyOnWriteArraySet.iterator();
 	  Integer i = it.next(); // but iteration is via an array which mayes it O(1) fast, and it is thread safe
 
-	  Thread write = new Thread(new Runnable() {
-
-		 @Override
-		 public void run(){
-			copyOnWriteArraySet.add(new Random(3).nextInt());
-		 }
-	  });
-
-	  Thread read = new Thread(new Runnable() {
-
-		 @Override
-		 public void run(){
-			if(copyOnWriteArraySet.iterator()
-								  .hasNext()){
-			   linkedList.add(copyOnWriteArraySet.iterator()
-												 .next());
-			}
-		 }
-	  });
-
 	  for(int j = 0; j < 5; j++){ // will read and write at the same time putting the elements into the list, specific to the number of objects in the list
 		 // at the time of the run, as the array will be altered, not sure if it updates while the read is occurring...
-		 write.run();
-		 read.run();
+		 new Thread(new Runnable() {
+
+			@Override
+			public void run(){
+			   copyOnWriteArraySet.add(new Random(3).nextInt());
+			}
+		 }).start();
+
+		 new Thread(new Runnable() {
+
+			@Override
+			public void run(){
+			   if(copyOnWriteArraySet.iterator()
+									 .hasNext()){
+				  linkedList.add(copyOnWriteArraySet.iterator()
+													.next());
+			   }
+			}
+		 }).start();
 	  }
    }
 
