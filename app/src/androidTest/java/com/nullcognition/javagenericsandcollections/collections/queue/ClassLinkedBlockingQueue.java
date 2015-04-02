@@ -7,6 +7,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
  * Created by ersin on 30/03/15 at 11:07 PM
  */
 public class ClassLinkedBlockingQueue {
+   // dont forget the drainTo methods for removing the queues contents to another collection
 
    ConcurrentLinkedQueue<Integer> concurrentLinkedQueue = new ConcurrentLinkedQueue<>();
 
