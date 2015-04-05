@@ -9,7 +9,7 @@ public class ClassArrayList {
 
    ArrayList<Integer> arrayList = new ArrayList<>(1); // look for a circular array implentation
 
-   // maortized cost of O(1) for over capacity reinitialization
+   // amortized cost of O(1) for over capacity reinitialization
 
 
 }
